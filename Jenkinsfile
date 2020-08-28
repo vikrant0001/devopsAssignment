@@ -5,9 +5,9 @@ pipeline {
         jdk 'javahome' 
     }
     stages {
-        stage('Stage 1') {
+        stage('Build') {
             steps {
-               echo 'This is a minimal pipeline.'
+               sh "mvn -version"
             }
         }
     }
