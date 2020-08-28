@@ -9,9 +9,7 @@ pipeline {
        stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'mavenhome') {
-                    sh 'mvn clean compile'
-                }
+               sh 'echo "Fail!"; exit 1'
             }
         }
     }
