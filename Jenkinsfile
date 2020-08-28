@@ -5,10 +5,16 @@ pipeline {
         jdk 'javahome' 
     }
     stages {
-        stage('Build') {
+
+       stage ('Compile Stage') {
+
             steps {
-               bat(mvn clean install) 
+                withMaven(maven : 'mavenhome') {
+                    sh 'mvn clean compile'
+                }
             }
         }
     }
+
+    
 }
