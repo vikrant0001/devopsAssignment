@@ -7,10 +7,7 @@ pipeline {
     stages {
         stage('Stage 1') {
             steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                ''' 
+               echo 'This is a minimal pipeline.'
             }
         }
     }
