@@ -9,7 +9,7 @@ pipeline {
        stage ('Compile Stage') {
 
             steps {
-               sh 'echo "Fail!"; exit 1'
+               bat 'mvn clean install'
             }
         }
     }
