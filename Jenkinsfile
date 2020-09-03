@@ -4,12 +4,19 @@ pipeline {
         maven 'mavenhome' 
         jdk 'javahome' 
     }
+    options {
+        disableConcurrentBuilds()
+    }
     stages {
 
        stage ('Compile Stage') {
-
-            steps {
+        steps {
                bat 'mvn clean install'
+            }
+        }
+        stage ('Unit Testing') {
+        steps {
+               bat 'mvn test'
             }
         }
     }
