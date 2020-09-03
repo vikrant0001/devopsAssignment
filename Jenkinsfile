@@ -28,9 +28,7 @@ pipeline {
                
             }
         }
-
-        sonarcube scanner
-    }
+}
 
     
 }
