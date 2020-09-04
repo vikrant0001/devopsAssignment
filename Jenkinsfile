@@ -49,7 +49,8 @@ pipeline {
         }
          stage ('Docker image') {
         steps {
-            bat 'docker build -t dtr.nagarro.com:443/i-vikrant-develop --no-cache -f Dockerfile'
+            bat 'docker build -t dtr.nagarro.com:443/i-vikrant-develop .'
+           
                
             }
         }
