@@ -47,6 +47,18 @@ pipeline {
                
             }
         }
+         stage ('Docker image') {
+        steps {
+            bat '/bin/docker build -t dtr.nagarro.com:443/i-vikrant-develop --no-cache -f Dockerfile'
+               
+            }
+        }
+        stage ('Image push to dtr') {
+        steps {
+            bat '/bin/docker push  dtr.nagarro.com:443/i-vikrant-develop'
+               
+            }
+        }
         
 }
 
