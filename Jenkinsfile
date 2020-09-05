@@ -52,11 +52,7 @@ pipeline {
             bat 'docker build -t i-vikrant-develop .'
            }
         }
-        
-       
-
-
-           stage('Docker container') {
+        stage('Docker container') {
             parallel {
                 stage('Pre container check') {
                     steps {
