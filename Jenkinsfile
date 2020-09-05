@@ -49,7 +49,7 @@ pipeline {
         }
          stage ('Docker image') {
         steps {
-            bat 'docker build -t dtr.nagarro.com:443/i-vikrant-develop .'
+            bat 'docker build -t i-vikrant-develop .'
            
                
             }
