@@ -53,15 +53,30 @@ pipeline {
            }
         }
         
-        stage ('Image push to dtr') {
-        steps {
-            bat "docker tag i-vikrant-develop dtr.nagarro.com:443/i-vikrant-develop"
-            bat 'docker push  dtr.nagarro.com:443/i-vikrant-develop'
-               
-            }
-        }
-        
-}
+       
 
-    
+
+           stage('Docker container') {
+            parallel {
+                stage('Pre container check') {
+                    steps {
+                        script {
+                            containerID = powershell(returnStdout: true, script:'docker ps --filter name=i-vikrant-develop --format "{{.ID}}"')
+                            if (containerID) {
+                                bat "docker stop ${containerID}"
+                                bat "docker rm -f ${containerID}"
+                            }
+                        }
+                    }
+                }
+                 stage ('Image push to dtr') {
+                    steps {
+                        bat "docker tag i-vikrant-develop dtr.nagarro.com:443/i-vikrant-develop"
+                        bat 'docker push  dtr.nagarro.com:443/i-vikrant-develop'
+                        }
+                    }
+                 }
+             }
+        
+        }
 }
