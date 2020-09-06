@@ -73,6 +73,15 @@ pipeline {
                     }
                  }
              }
+
+            stage ('Helm chart Deployment') {
+                    steps {
+                     
+                bat " helm install fourthhelm ./nagp-assignment-chart"
+
+
+                        }
+                    } 
         
         }
 }
