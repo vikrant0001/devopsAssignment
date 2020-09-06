@@ -34,22 +34,22 @@ securityContext: {}
   #   - ALL
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
-  # runAsUser: 1000
+  # runAsUser: 1000 
 containers:
-  name: "c-ajaysrivsatava-master"
+  name: "c-vikrant01-master"
 
-label: "nagp-assignment-devops"
+label: "label-vikrant01-master"
 
 service:
   type: NodePort
-  port: 8089
-  targetPort: 80
-  nodePort: 31115
-  name: "nagp-assignment-service"
+  port: 6000
+  targetPort: 8080
+  nodePort: 30157
+  name: "vikrant01-kubernates-assignment-service"
 
 deployment:
-  name: "nagp-assignment-deployment"
-  port: 80
+  name: "vikrant01-kubernates-assignment-deployment"
+  port: 8080
 
 ingress:
   enabled: false

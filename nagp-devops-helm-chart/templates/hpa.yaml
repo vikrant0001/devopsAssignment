@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "nagp-assignment-chart.fullname" . }}
+  name: {{ include "nagp-devops-helm-chart.fullname" . }}
   labels:
-    {{- include "nagp-assignment-chart.labels" . | nindent 4 }}
+    {{- include "nagp-devops-helm-chart.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "nagp-assignment-chart.fullname" . }}
+    name: {{ include "nagp-devops-helm-chart.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:

@@ -76,13 +76,13 @@ pipeline {
              stage ('Docker Deployment') {
                     steps {
                      
-                bat "docker run -p 6000:8080 i-vikrant-develop"
+                bat "docker run -d -p 6000:8080 i-vikrant-develop"
                          }
             } 
             // stage ('Helm chart Deployment') {
             //         steps {
                      
-            //     bat " helm install fourthhelm ./nagp-assignment-chart"
+            //     bat " helm install nagpDevopsHelm ./nagp-devops-helm-chart"
             //              }
             // } 
         
