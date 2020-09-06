@@ -57,7 +57,7 @@ pipeline {
                 stage('Precontainer Check') {
                     steps {
                         script {
-                            containerID = powershell(returnStdout: true, script:'docker ps --filter name=i-vikrant-develop --format "{{.ID}}"')
+                            containerID = powershell(returnStdout: true, script:'docker ps -a --filter name=i-vikrant-develop --format "{{.ID}}"')
                             if (containerID) {
                                 bat "docker stop ${containerID}"
                                 bat "docker rm -f ${containerID}"
