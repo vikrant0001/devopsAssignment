@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository:  dtr.nagarro.com:443/hello-kube-ajay
-  pullPolicy: IfNotPresent
+  repository:  dtr.nagarro.com:443/i-vikrant-develop
+  pullPolicy: IfNotPresent 
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 

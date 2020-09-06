@@ -9,7 +9,7 @@ pipeline {
     }
     stages {
 
-       stage ('Compile Stage') {
+       stage ('Build') {
         steps {
                bat 'mvn clean install'
             }
@@ -19,7 +19,7 @@ pipeline {
                bat 'mvn test'
             }
         }
-        stage ('Sonar Scan') {
+        stage ('Sonar Analysis') {
         steps {
             withSonarQubeEnv('sonarcube scanner') 
             {
@@ -52,9 +52,9 @@ pipeline {
             bat 'docker build -t i-vikrant-develop .'
            }
         }
-        stage('Docker container') {
+        stage('Containers') {
             parallel {
-                stage('Pre container check') {
+                stage('Precontainer Check') {
                     steps {
                         script {
                             containerID = powershell(returnStdout: true, script:'docker ps --filter name=i-vikrant-develop --format "{{.ID}}"')
@@ -65,23 +65,26 @@ pipeline {
                         }
                     }
                 }
-                 stage ('Image push to dtr') {
+                 stage ('PushtoDTR') {
                     steps {
                         bat "docker tag i-vikrant-develop dtr.nagarro.com:443/i-vikrant-develop"
-                        bat 'docker push  dtr.nagarro.com:443/i-vikrant-develop'
+                      //  bat 'docker push  dtr.nagarro.com:443/i-vikrant-develop'
                         }
                     }
                  }
              }
-
-            stage ('Helm chart Deployment') {
+             stage ('Docker Deployment') {
                     steps {
                      
-                bat " helm install fourthhelm ./nagp-assignment-chart"
-
-
-                        }
-                    } 
+                bat "docker run -p 6000| 8080 i-vikrant-develop"
+                         }
+            } 
+            // stage ('Helm chart Deployment') {
+            //         steps {
+                     
+            //     bat " helm install fourthhelm ./nagp-assignment-chart"
+            //              }
+            // } 
         
         }
 }
