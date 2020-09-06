@@ -76,7 +76,7 @@ pipeline {
              stage ('Docker Deployment') {
                     steps {
                      
-                bat "docker run -p 6000| 8080 i-vikrant-develop"
+                bat "docker run -p 6000:8080 i-vikrant-develop"
                          }
             } 
             // stage ('Helm chart Deployment') {
